@@ -1,19 +1,13 @@
-const express = require('express')
-const app = express()
-const bodyParser = require("body-parser");
+
+const mongoose = require('mongoose');
 const port = 3000
-app.use(express.urlencoded());
+const app = require('./app');
+//mongoose.connect('mongodb://localhost/testaroo', { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false });
 
-// Parse JSON bodies (as sent by API clients)
-app.use(express.json());
+// mongoose.connection.once('open', () =>{
+//     console.log('connection established')
+// }).on('connectionError',(err) =>{
+//     console.log(err);
+// })
 
-
-app.use(bodyParser.urlencoded({ extended: false }))
-
-app.use(bodyParser.json())
-// your code goes here
-
-
-app.listen(port, () => console.log(`App listening on port ${port}!`))
-
-module.exports = app;
+app.listen(port, () => console.log(`App listening on port ${port}!`));
